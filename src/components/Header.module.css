@@ -1,0 +1,117 @@
+.header {
+    width: 100vw;
+    height: 100px;
+}
+.header a {
+    font-family: ABeeZee;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+}
+.logo {
+    position: relative;
+    height: 80px;
+    border: none!important;
+}
+.mobileHeader{
+    display: flex;
+    width: 100vw;
+    height: 100px;
+    padding: 0 2rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+.mobileHeader.navMobileActive{
+    background-color: #000;
+}
+
+.navmenu {
+    display: flex;
+    width: 100vw;
+    height: 100px;
+    padding: 0 6rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    margin-top: 10px;
+
+} 
+.navmenu :global(a.active) {
+    border-bottom: 3px solid #CE9695;
+}
+.navmenu:not(.navMobile) a {
+    color:black
+}
+.navmenu.navMobile a{
+    color: white;
+}
+
+.navMobile {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    gap: 2rem;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-20%);
+    transition: 0.1s;
+    background-color: #000;
+    position: relative;
+    z-index: 10;
+
+}
+.navMobile .logo{
+    transform: initial;
+    opacity: 1;
+    visibility: 1;
+}
+
+.navMobileActive{
+    opacity: initial;
+    visibility: initial;
+    transform: initial;
+    padding: 0 2rem;
+}
+.navMobileActive a {
+    color: white;
+}
+
+.mobileButton {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    width: 40px; 
+    height: 40px;
+    border: 1px solid transparent;
+    border-radius: 0.2rem;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: 0.1s;
+    padding: 0;
+}
+
+.mobileButton::after {
+    display: block ;
+    content: '';
+    width: 1.2rem;
+    height: 2px;
+    border-radius: 2px ;
+    background-color: currentColor;
+    box-shadow: 0 6px currentColor, 0 -6px currentColor ;
+    transition: 0.2s;
+}
+
+.mobileButton.mobileButtonActive::after{
+    transform: rotate(90deg);
+    transition: 0.2s;
+    width: 4px;
+    height: 4px;
+    letter-spacing: 2px;
+    
+
+}

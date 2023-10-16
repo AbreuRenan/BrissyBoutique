@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import useMedia from "./CustomHooks/useMedia";
 
 import styles from "./Header.module.css";
@@ -19,9 +19,13 @@ function Header() {
   return (
     <header className={`${styles.header}`}>
       {mobileState && (
-        <>
+        <nav
+          className={`${styles.mobileHeader} ${
+            mobileMenu && styles.navMobileActive
+          }`}
+        >
           <NavLink to="/">
-            <img src={logo} alt="logo img" />
+            <img src={logo} alt="logo img" className={`${styles.logo}`} />
           </NavLink>
           <button
             aria-label="Menu mobile"
@@ -30,29 +34,19 @@ function Header() {
             }`}
             onClick={() => setMobileMenu(!mobileMenu)}
           ></button>
-        </>
+        </nav>
       )}
+
       <nav
         className={`
             ${mobileState ? styles.navMobile : styles.navmenu} 
-            ${mobileMenu && styles.navMobileActive}
-        `}
+            ${mobileMenu && styles.navMobileActive} `}
       >
-        <div className={`${mobileMenu && styles.mobileSeparador}`}>
-          <NavLink to="/">
-            <img src={logo} alt="logo img" />
-          </NavLink>
-          {mobileState && (
-            <button
-              aria-label="Menu mobile"
-              className={`
-                ${styles.mobileButton} 
-                ${mobileMenu && styles.closeButton}
-            `}
-              onClick={() => setMobileMenu(!mobileMenu)}
-            ></button>
-          )}
-        </div>
+        {!mobileState && (
+          <Link to="/#">
+            <img src={logo} alt="logo img" className={`${styles.logo}`} />
+          </Link>
+        )}
         <NavLink to="/" end>
           Home
         </NavLink>
