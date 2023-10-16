@@ -1,5 +1,3 @@
-import React, { ReactComponentElement } from "react";
-
 import styles from "./BenefitsSections.module.css";
 
 import entragasicone from "../assets/icons/Entrega.svg";
