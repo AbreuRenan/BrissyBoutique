@@ -3,7 +3,7 @@ import styles from "./BenefitsSections.module.css";
 import entragasicone from "../assets/icons/Entrega.svg";
 import formaspagicone from "../assets/icons/FormasPagamento.svg";
 import whatsapp from "../assets/icons/CompreWhatsapp.svg";
-import casa from "../assets/icons/compreEmCasa.svg";
+import casa from "../assets/icons/CompreEmCasa.svg";
 
 function BenefitsSections() {
   return (
