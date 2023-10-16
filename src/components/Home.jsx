@@ -1,7 +1,16 @@
 import React from "react";
+import HeroSection from "./HeroSection";
+import BenefitsSections from "./BenefitsSections";
+import SocialProfSection from "./SocialProfSection";
 
 function Home() {
-  return <div>Home</div>;
+  return (
+    <>
+      <HeroSection />
+      <BenefitsSections />
+      <SocialProfSection />
+    </>
+  );
 }
 
 export default Home;
