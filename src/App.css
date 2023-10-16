@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee');
+@font-face {
+  font-family: 'Dalmantian';
+    src: url('assets/fonts/Dalmantian.otf'); 
+    src: url('assets/fonts/Dalmantian.ttf'); 
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'ABeeZee', sans-serif;
+
+  --cor-amarelo-claro: #FFEDCF;
+}
