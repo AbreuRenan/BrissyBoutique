@@ -1,7 +1,12 @@
 import React from "react";
+import ReactFeedPlugin from "./InstaFeed/ReactFeedPlugin";
 
 function SocialProfSection() {
-  return <div>social</div>;
+  return (
+    <div>
+      <ReactFeedPlugin />
+    </div>
+  );
 }
 
 export default SocialProfSection;
