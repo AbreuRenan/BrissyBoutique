@@ -4,7 +4,7 @@ import React from "react";
 function ReactFeedPlugin() {
   const [instagramData, setInstagramData] = React.useState([]);
   async function getInstaFeed() {
-    const token = import.meta.env.VITE_REACT_APP_FEED_PLUGIN_TOKEN;
+    const token = import.meta.env.VITE_REACT_APP_FEED_PLUGIN_ACCESS_TOKEN;
     const fields = "id,media_type,media_url,permalink";
     const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
     const { data } = await axios.get(url);
