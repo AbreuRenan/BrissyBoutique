@@ -17,6 +17,7 @@ function App() {
           <Route path="/loja" element={<Loja />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/auth" element={<AuthFeedPlugin />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </>
