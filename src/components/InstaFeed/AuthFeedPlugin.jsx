@@ -1,8 +1,9 @@
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 function AuthFeedPlugin() {
   const [params, setParams] = useSearchParams();
+  const navigate = useNavigate();
   const [code, setCode] = React.useState(false);
   const [accessToken, setAccessToken] = React.useState(null);
 
@@ -25,7 +26,6 @@ function AuthFeedPlugin() {
 
     const fetch_response = await fetch(url, {
       method: "POST",
-
       body: params,
     })
       .then((response) => response.text())
@@ -34,7 +34,7 @@ function AuthFeedPlugin() {
   }
 
   function openAuthWindow() {
-    const url = "https://api.instagram.com/oauth/authorize";
+    let url = "https://api.instagram.com/oauth/authorize?";
     const params = new URLSearchParams();
     params.append("client_id", import.meta.env.VITE_REACT_FEED_APP_ID);
     params.append(
@@ -43,11 +43,8 @@ function AuthFeedPlugin() {
     );
     params.append("scope", "user_profile,user_media");
     params.append("response_type", "code");
-
-    fetch(url, {
-      method: "GET",
-      body: params,
-    });
+    url += params.toString();
+    window.open(url, "_blank", "rel=noopener noreferrer");
   }
 
   return (
