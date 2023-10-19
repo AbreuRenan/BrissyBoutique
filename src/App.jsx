@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Contato from "./components/Contato";
 import Loja from "./components/Loja";
 import "./App.css";
+import AuthFeedPlugin from "./components/InstaFeed/AuthFeedPlugin";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/loja" element={<Loja />} />
           <Route path="/contato" element={<Contato />} />
+          <Route path="/auth" element={<AuthFeedPlugin />} />
         </Routes>
       </BrowserRouter>
     </>
