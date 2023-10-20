@@ -7,6 +7,7 @@ function ReactFeedPlugin() {
     const token = import.meta.env.VITE_REACT_APP_FEED_PLUGIN_ACCESS_TOKEN;
     const fields = "id,media_type,media_url,permalink";
     const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
+    console.log(token);
     const { data } = await axios.get(url);
     setInstagramData([instagramData, ...data["data"]]);
   }
