@@ -1,0 +1,132 @@
+.instaGrid{
+    display: grid;
+    grid-Template-Columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+}
+.instagram_card {
+    width: 100%;
+}
+.instagram_card>* {
+    display: none;
+    padding: 0;
+    margin: 0;
+}
+
+.post_image_container{
+    display: initial;
+    width: 30%;
+}
+.post_image_container>a{
+    position: relative;
+}
+.post_image_photo {
+    display: initial;
+    width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+    .instaGrid{
+        display: grid;
+        grid-Template-Columns: repeat(auto-fill, minmax(280px, 1fr));
+        justify-items: center;
+        align-items: center;
+        width: 100vw;
+        height: 600px;
+        gap: 10px;
+        padding: 8px;
+    }
+    
+    a {
+        text-decoration: none;
+        color: initial;
+    }
+    .instagram_card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: 0.5rem;
+        box-shadow:15px 15px 60px rgba(0,0,0,0.25) ;
+        width: 100%;
+        color: #222
+    }
+    
+    .post_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+    }
+    .post_user_details {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    .post_profile_picture {
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 36px;
+        height: 36px;
+    }
+    .post_profile_picture>img {
+        object-fit: cover;
+        object-position: center center;
+        height: 48px;
+    }
+    .post_profile_name {}
+    
+    .post_profile_name+a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        height: 100%;
+        font-weight: 800;
+        color: blue;
+    
+    }
+    .post_time_upload {}
+    .post_image_container {
+        width: 100%;
+    }
+    .post_image_photo {
+        width: 100%;
+    }
+    .post_content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 14px 16px;
+        font-size: 14px;
+    }
+    .post_actions_bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 6px 0 8px 0;
+    }
+    .post_actions {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        gap: 0.5rem;
+    }
+    .post_bookmark {}
+    .post_likes {}
+    .post_caption {
+        font-size: 12px;
+        text-wrap: nowrap;
+        width: 100%;
+        overflow: hidden;
+    }
+    .post_comments {}
+    
+}
