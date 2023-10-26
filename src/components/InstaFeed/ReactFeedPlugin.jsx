@@ -1,41 +1,37 @@
-import axios from "axios";
 import React from "react";
+import useMedia from "../CustomHooks/useMedia";
+import InstaPost from "./InstaPost";
+import "./InstaPost.css";
+
+const TOKEN = import.meta.env.VITE_REACT_APP_FEED_PLUGIN_ACCESS_TOKEN;
 
 function ReactFeedPlugin() {
   const [instagramData, setInstagramData] = React.useState([]);
-  async function getInstaFeed() {
-    const token = import.meta.env.VITE_REACT_APP_FEED_PLUGIN_ACCESS_TOKEN;
-    const fields = "id,media_type,media_url,permalink";
-    const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
-    console.log(token);
-    const { data } = await axios.get(url);
-    setInstagramData([instagramData, ...data["data"]]);
-  }
+  const mobileState = useMedia("(max-width: 40rem)");
+  const numberOfPhotos = mobileState ? 3 : 6;
 
   React.useEffect(() => {
-    getInstaFeed();
+    async function getInstaFeed(access_token) {
+      const token = access_token;
+      const fields =
+        "id,media_type,media_url,permalink,timestamp,caption,username";
+      const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
+      const fetch_response = await fetch(url);
+      const json = fetch_response.ok
+        ? await fetch_response.json()
+        : fetch_response.statusText;
+      return json;
+    }
+    getInstaFeed(TOKEN);
   }, []);
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(4, 1fr)",
-      }}
-    >
+    <div className="instaGrid">
       {instagramData
         ?.filter((item) => item.media_type === "IMAGE")
+        .slice(0, numberOfPhotos)
         .map((img) => {
-          return (
-            <div key={img.id}>
-              <img
-                src={img.media_url}
-                frameBorder="0"
-                width={"auto"}
-                height={"200px"}
-              />
-            </div>
-          );
+          return <InstaPost key={img.id} {...img} />;
         })}
     </div>
   );

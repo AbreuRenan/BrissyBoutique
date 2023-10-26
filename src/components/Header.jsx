@@ -14,8 +14,6 @@ function Header() {
     setMobileMenu(false);
   }, [pathname]);
 
-  React.useEffect(() => {}, [mobileState]);
-
   return (
     <header className={`${styles.header}`}>
       {mobileState && (
