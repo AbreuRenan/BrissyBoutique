@@ -17,10 +17,11 @@ function ReactFeedPlugin() {
         "id,media_type,media_url,permalink,timestamp,caption,username";
       const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
       const fetch_response = await fetch(url);
-      const json = fetch_response.ok
+      const { data } = fetch_response.ok
         ? await fetch_response.json()
         : fetch_response.statusText;
-      return json;
+      console.log(data);
+      setInstagramData((i) => [i, ...data]);
     }
     getInstaFeed(TOKEN);
   }, []);
