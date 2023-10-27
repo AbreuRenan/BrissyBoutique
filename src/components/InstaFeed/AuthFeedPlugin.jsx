@@ -12,15 +12,15 @@ function AuthFeedPlugin() {
     setCode(authCode);
   }, [params]);
 
-  React.useEffect(() => {
-    if (code) {
-      const response = fetch(`http://localhost:${port}/auth?code=${code}`)
-        .then((r) => r.json())
-        .then((json) => json)
-        .catch((error) => error.message);
-      console.log(response);
-    }
-  }, [code]);
+  // React.useEffect(() => {
+  //   if (code) {
+  //     const response = fetch(`http://localhost:${port}/auth?code=${code}`)
+  //       .then((r) => r.json())
+  //       .then((json) => json)
+  //       .catch((error) => error.message);
+  //     console.log(response);
+  //   }
+  // }, [code]);
 
   function openAuthWindow() {
     let url = "https://api.instagram.com/oauth/authorize?";
@@ -87,6 +87,15 @@ function AuthFeedPlugin() {
       >
         <button
           onClick={openAuthWindow}
+          style={{
+            padding: "1rem 2rem",
+            borderRadius: "4px",
+          }}
+        >
+          Autorizar
+        </button>
+        <button
+          onClick={sendAuthCode}
           style={{
             padding: "1rem 2rem",
             borderRadius: "4px",

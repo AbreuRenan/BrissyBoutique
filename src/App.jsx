@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/loja" element={<Loja />} />
           <Route path="/contato" element={<Contato />} />
-          <Route path="/oauth" element={<AuthFeedPlugin />} />
+          <Route path="/auth" element={<AuthFeedPlugin />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </BrowserRouter>

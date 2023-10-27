@@ -3,7 +3,7 @@ import useMedia from "../CustomHooks/useMedia";
 import InstaPost from "./InstaPost";
 import "./InstaPost.css";
 
-const TOKEN = import.meta.env.VITE_REACT_APP_FEED_PLUGIN_ACCESS_TOKEN;
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function ReactFeedPlugin() {
   const [instagramData, setInstagramData] = React.useState([]);
@@ -11,19 +11,17 @@ function ReactFeedPlugin() {
   const numberOfPhotos = mobileState ? 3 : 6;
 
   React.useEffect(() => {
-    async function getInstaFeed(access_token) {
-      const token = access_token;
-      const fields =
-        "id,media_type,media_url,permalink,timestamp,caption,username";
-      const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
-      const fetch_response = await fetch(url);
-      const { data } = fetch_response.ok
-        ? await fetch_response.json()
-        : fetch_response.statusText;
-      console.log(data);
-      setInstagramData((i) => [i, ...data]);
+    async function getInstaFeed() {
+      try {
+        const { data } = await fetch(`${apiUrl}/GET_INSTAFEED`).then((r) =>
+          r.ok ? r.json() : r.statusText
+        );
+        setInstagramData((i) => [i, ...data]);
+      } catch (error) {
+        console.log(error);
+      }
     }
-    getInstaFeed(TOKEN);
+    getInstaFeed();
   }, []);
 
   return (
