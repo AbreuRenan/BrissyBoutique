@@ -3,9 +3,9 @@ import { useSearchParams } from "react-router-dom";
 const port = import.meta.env.VITE_PORT;
 
 function AuthFeedPlugin() {
-  const [params, setParams] = useSearchParams();
-  const [code, setCode] = React.useState(false);
-  const [copyArea, setCopyArea] = React.useState();
+  const [params, setParams] = useSearchParams("");
+  const [code, setCode] = React.useState("");
+  const [copyArea, setCopyArea] = React.useState("");
 
   React.useEffect(() => {
     const authCode = params.get("code") || false;
@@ -13,12 +13,13 @@ function AuthFeedPlugin() {
   }, [params]);
 
   // React.useEffect(() => {
-  //   if (code) {
-  //     const response = fetch(`http://localhost:${port}/auth?code=${code}`)
-  //       .then((r) => r.json())
-  //       .then((json) => json)
-  //       .catch((error) => error.message);
-  //     console.log(response);
+  //   async function autosend(c) {
+  //     const response = await fetch(`http://localhost:${port}/auth?code=${c}`);
+  //     const json = await response.json();
+  //     console.log(json);
+  //   }
+  //   if (code.length > 0) {
+  //     autosend(code);
   //   }
   // }, [code]);
 
@@ -101,7 +102,7 @@ function AuthFeedPlugin() {
             borderRadius: "4px",
           }}
         >
-          Autorizar
+          Enviar Codigo
         </button>
       </div>
       <div
