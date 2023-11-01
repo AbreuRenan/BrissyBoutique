@@ -4,6 +4,7 @@ import useMedia from "./CustomHooks/useMedia";
 
 import styles from "./Header.module.css";
 import logo from "../assets/imgs/logo.png";
+import { HashLink } from "react-router-hash-link";
 
 function Header() {
   const [mobileMenu, setMobileMenu] = React.useState(false);
@@ -22,8 +23,13 @@ function Header() {
             mobileMenu && styles.navMobileActive
           }`}
         >
-          <NavLink to="/">
-            <img src={logo} alt="logo img" className={`${styles.logo}`} />
+          <NavLink to="#logo">
+            <img
+              src={logo}
+              alt="logo img"
+              className={`${styles.logo}`}
+              id="logo"
+            />
           </NavLink>
           <button
             aria-label="Menu mobile"
@@ -48,8 +54,8 @@ function Header() {
         <NavLink to="/" end>
           Home
         </NavLink>
-        <NavLink to="loja">Nossa Loja</NavLink>
-        <NavLink to="Contato">Contato</NavLink>
+        <HashLink to="#loja">Nossa Loja</HashLink>
+        <HashLink to="#contato">Contato</HashLink>
       </nav>
     </header>
   );

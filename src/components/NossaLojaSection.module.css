@@ -1,0 +1,30 @@
+.NossaLojaSection {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    max-width: 1440px;
+    max-height: 200px;
+}
+.NossaLojaSection>h1 {
+    color: #CE9695;
+    font-size: 3rem;
+    padding: 0rem 3rem;
+    margin-top: 3rem;
+}
+.galeriaLoja {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: center;
+    align-items: center;
+    gap: .75rem;
+    padding: 2rem 3rem;
+}
+.galeriaLoja img {
+    width: 100%;
+    height: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #fafafa;
+    box-shadow: 0 0 15px 6px rgba(0,0,0,0.15);
+}

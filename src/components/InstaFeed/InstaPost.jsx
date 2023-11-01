@@ -13,29 +13,28 @@ import profilePicture from "../../assets/imgs/logo.png";
 function InstaPost(data) {
   const { permalink, media_url, username, caption, timestamp } = data;
   const time = new Date(timestamp);
-  const agora = new Date();
 
-  function displayTime(dateObj) {
-    const now = new Date();
-    const diferenca = now.getTime() - dateObj.getTime();
-
-    const milissegundosPorDia = 24 * 60 * 60 * 1000; // 1 dia em milissegundos
-    const milissegundosPorHora = 60 * 60 * 1000; // 1 hora em milissegundos
-    const milissegundosPorMinuto = 60 * 1000; // 1 minuto em milissegundos
-    const milissegundosPorSegundo = 1000; // 1 segundo em milissegundos
-
-    let dias = Math.floor(diferenca / milissegundosPorDia);
-    let horas = Math.floor(
-      (diferenca % milissegundosPorDia) / milissegundosPorHora
-    );
-    let minutos = Math.floor(
-      (diferenca % milissegundosPorHora) / milissegundosPorMinuto
-    );
-    let segundos = Math.floor(
-      (diferenca % milissegundosPorMinuto) / milissegundosPorSegundo
-    );
-
-    return `${dias}d ${horas}h ${minutos}m`;
+  function displayData(timestamp) {
+    const data = new Date(timestamp);
+    const meses = [
+      "Janeiro",
+      "Fevereiro",
+      "Março",
+      "Abril",
+      "Maio",
+      "Junho",
+      "Julho",
+      "Agosto",
+      "Setembro",
+      "Outubro",
+      "Novembro",
+      "Dezembro",
+    ];
+    const dia = data.getDate();
+    const mesPorExtenso = meses[data.getMonth()];
+    const ano = data.getFullYear();
+    const dataFormatada = `${dia} de ${mesPorExtenso} de ${ano}`;
+    return dataFormatada;
   }
 
   return (
@@ -52,7 +51,7 @@ function InstaPost(data) {
         </div>
 
         <div className="post_image_container">
-          <a href="https://www.instagram.com/divino_closettmg/">
+          <a href={permalink}>
             <img src={media_url} className="post_image_photo" />
           </a>
         </div>
@@ -75,7 +74,7 @@ function InstaPost(data) {
             @<strong>{username}</strong> {caption}
           </div>
           <div className="post_time_upload">
-            <p>{displayTime(time)}</p>
+            <p>{displayData(time)}</p>
           </div>
         </div>
       </div>

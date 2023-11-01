@@ -34,8 +34,7 @@
         justify-items: center;
         align-items: center;
         width: 100vw;
-        height: 600px;
-        gap: 10px;
+        gap: 2rem;
         padding: 8px;
     }
     

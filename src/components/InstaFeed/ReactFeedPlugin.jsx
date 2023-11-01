@@ -3,7 +3,7 @@ import useMedia from "../CustomHooks/useMedia";
 import InstaPost from "./InstaPost";
 import "./InstaPost.css";
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const TOKEN = import.meta.env.VITE_TOKEN;
 
 function ReactFeedPlugin() {
   const [instagramData, setInstagramData] = React.useState([]);
@@ -13,9 +13,7 @@ function ReactFeedPlugin() {
   React.useEffect(() => {
     async function getInstaFeed() {
       try {
-        const { data } = await fetch(`${apiUrl}/GET_INSTAFEED`).then((r) =>
-          r.ok ? r.json() : r.statusText
-        );
+        const { data } = await fetchGraphAPI(TOKEN).then((r) => r);
         setInstagramData((i) => [i, ...data]);
       } catch (error) {
         console.log(error);
@@ -23,6 +21,18 @@ function ReactFeedPlugin() {
     }
     getInstaFeed();
   }, []);
+
+  async function fetchGraphAPI(access_token) {
+    const token = access_token;
+    const fields =
+      "id,media_type,media_url,permalink,timestamp,caption,username";
+    const url = `https://graph.instagram.com/me/media?access_token=${token}&fields=${fields}`;
+    const fetch_response = await fetch(url);
+    const json = fetch_response.ok
+      ? await fetch_response.json()
+      : fetch_response.statusText;
+    return json;
+  }
 
   return (
     <div className="instaGrid">

@@ -8,14 +8,24 @@ import casa from "../assets/icons/CompreEmCasa.svg";
 function BenefitsSections() {
   return (
     <section className={`${styles.benefitsSection}`}>
-      <img className={`${styles.benefitsIcons}`} src={entragasicone} />
-      <img className={`${styles.benefitsIcons}`} src={whatsapp} />
-      <img className={`${styles.benefitsIcons}`} src={formaspagicone} />
-      <img className={`${styles.benefitsIcons}`} src={casa} />
-      <p className={`${styles.benefitsTexts}`}>Taxa fixa para Uberlândia</p>
-      <p className={`${styles.benefitsTexts}`}>Compras Pelo WhatsApp</p>
-      <p className={`${styles.benefitsTexts}`}>Diversas Formas de Pagamento</p>
-      <p className={`${styles.benefitsTexts}`}>Compre sem sair de Casa</p>
+      <div>
+        <img className={`${styles.benefitsIcons}`} src={entragasicone} />
+        <p className={`${styles.benefitsTexts}`}>Taxa fixa para Uberlândia</p>
+      </div>
+      <div>
+        <img className={`${styles.benefitsIcons}`} src={whatsapp} />
+        <p className={`${styles.benefitsTexts}`}>Compras Pelo WhatsApp</p>
+      </div>
+      <div>
+        <img className={`${styles.benefitsIcons}`} src={formaspagicone} />
+        <p className={`${styles.benefitsTexts}`}>
+          Diversas Formas de Pagamento
+        </p>
+      </div>
+      <div>
+        <img className={`${styles.benefitsIcons}`} src={casa} />
+        <p className={`${styles.benefitsTexts}`}>Compre sem sair de Casa</p>
+      </div>
     </section>
   );
 }

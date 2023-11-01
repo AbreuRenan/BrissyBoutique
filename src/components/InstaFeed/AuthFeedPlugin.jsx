@@ -1,6 +1,8 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 const port = import.meta.env.VITE_PORT;
+const APP_ID = import.meta.env.VITE_REACT_FEED_APP_ID;
+const REDIRECT_URI = import.meta.env.VITE_REACT_FEED_APP_REDIRECT_URI;
 
 function AuthFeedPlugin() {
   const [params, setParams] = useSearchParams("");
@@ -12,25 +14,11 @@ function AuthFeedPlugin() {
     setCode(authCode);
   }, [params]);
 
-  // React.useEffect(() => {
-  //   async function autosend(c) {
-  //     const response = await fetch(`http://localhost:${port}/auth?code=${c}`);
-  //     const json = await response.json();
-  //     console.log(json);
-  //   }
-  //   if (code.length > 0) {
-  //     autosend(code);
-  //   }
-  // }, [code]);
-
   function openAuthWindow() {
     let url = "https://api.instagram.com/oauth/authorize?";
     const params = new URLSearchParams();
-    params.append("client_id", import.meta.env.VITE_REACT_FEED_APP_ID);
-    params.append(
-      "redirect_uri",
-      import.meta.env.VITE_REACT_FEED_APP_REDIRECT_URI
-    );
+    params.append("client_id", APP_ID);
+    params.append("redirect_uri", REDIRECT_URI);
     params.append("scope", "user_profile,user_media");
     params.append("response_type", "code");
     url += params.toString();
