@@ -3,6 +3,7 @@ import BenefitsSections from "./BenefitsSections";
 import SocialProfSection from "./SocialProfSection";
 import Contato from "./Contato";
 import NossaLojaSection from "./NossaLojaSection";
+import ComoChegarSections from "./ComoChegarSections";
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
       <SocialProfSection />
       <Contato />
       <NossaLojaSection />
+      <ComoChegarSections />
     </>
   );
 }

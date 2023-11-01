@@ -34,9 +34,6 @@ function Contato() {
       if (elementoNaTela.isIntersecting) {
         ps.forEach((p) => p.classList.add("animaUp"));
         h.forEach((h) => h.classList.add("animaUp"));
-        console.log("entrou na tela");
-      } else {
-        console.log("saiu da tela");
       }
     });
   }

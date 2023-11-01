@@ -3,7 +3,6 @@
     flex-direction: column;
     width: 100vw;
     max-width: 1440px;
-    max-height: 200px;
 }
 .NossaLojaSection>h1 {
     color: #CE9695;
@@ -26,5 +25,25 @@
     object-fit: cover;
     border-radius: 4px;
     border: 1px solid #fafafa;
-    box-shadow: 0 0 15px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 0 15px 6px rgba(0,0,0,0.15);  
+}
+
+
+@media screen and (max-width: 500px) {
+
+    .NossaLojaSection>h1 {
+        font-size: 2.5rem;
+        padding: 0.5rem;
+    }
+
+    .galeriaLoja{
+        gap: .25rem;
+        padding: .5rem;
+        grid-template-columns: 1fr;
+    }
+    .galeriaLoja img {
+        height: 400px;
+        transition: ease .4s;
+    }
+    
 }
