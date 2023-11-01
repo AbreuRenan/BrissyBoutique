@@ -1,8 +1,6 @@
 .heroSection {
     width: 100vw;
-    max-width: 1440px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     padding: 0 2rem;
     gap: 2rem;
     background: #CE9695;
@@ -12,11 +10,12 @@
 .textWrapper {
     display: flex;
     height: 100%;
-    max-width: 450px;
+    max-width: 50%;
     flex-direction: column;
     gap: 2rem;
     color: white;
-    padding: 1rem;
+    padding: 3rem;
+    flex-grow: 1;
 
 }
 .headline{
@@ -47,9 +46,10 @@
 .heroImg {
     height: auto ;
     width: 100%;
+    max-width: 50%;
     min-width: 380px;
 }
-@media screen and (max-width:40rem) {
+@media screen and (max-width:500px) {
     .heroSection {
         display: flex;
         flex-direction: column-reverse;
@@ -63,5 +63,8 @@
         min-width: initial;
     }
 
+    .textWrapper{
+        max-width: 100%;
+    }
     
 }

@@ -4,6 +4,8 @@ import SocialProfSection from "./SocialProfSection";
 import Contato from "./Contato";
 import NossaLojaSection from "./NossaLojaSection";
 import ComoChegarSections from "./ComoChegarSections";
+import LastCTASection from "./LastCTASection";
+import Footer from "./footer";
 
 function Home() {
   return (
@@ -14,6 +16,8 @@ function Home() {
       <Contato />
       <NossaLojaSection />
       <ComoChegarSections />
+      <LastCTASection />
+      <Footer />
     </>
   );
 }

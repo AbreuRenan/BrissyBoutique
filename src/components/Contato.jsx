@@ -5,13 +5,13 @@ import shopfast from "../assets/imgs/shopfast.png";
 
 function Contato() {
   const [observador, setObservador] = React.useState(null);
-  const options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.5,
-  };
 
   React.useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
     const newObserver = new IntersectionObserver(observerHandler, options);
     setObservador(newObserver);
     return () => newObserver.disconnect();
@@ -27,7 +27,7 @@ function Contato() {
     }
   }, [observador]);
 
-  function observerHandler(elementosNaTela, observador) {
+  function observerHandler(elementosNaTela) {
     elementosNaTela.forEach((elementoNaTela) => {
       const h = document.querySelectorAll("#contato h1");
       const ps = document.querySelectorAll("#contato p");
