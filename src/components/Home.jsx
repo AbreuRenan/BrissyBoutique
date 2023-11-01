@@ -5,7 +5,7 @@ import Contato from "./Contato";
 import NossaLojaSection from "./NossaLojaSection";
 import ComoChegarSections from "./ComoChegarSections";
 import LastCTASection from "./LastCTASection";
-import Footer from "./footer";
+import Footer from "./Footer";
 
 function Home() {
   return (
