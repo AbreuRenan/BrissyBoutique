@@ -1,5 +1,6 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
+
 const port = import.meta.env.VITE_PORT;
 const APP_ID = import.meta.env.VITE_REACT_FEED_APP_ID;
 const REDIRECT_URI = import.meta.env.VITE_REACT_FEED_APP_REDIRECT_URI;
@@ -7,7 +8,7 @@ const REDIRECT_URI = import.meta.env.VITE_REACT_FEED_APP_REDIRECT_URI;
 function AuthFeedPlugin() {
   const [params, setParams] = useSearchParams("");
   const [code, setCode] = React.useState("");
-  const [copyArea, setCopyArea] = React.useState("");
+  const [PasteArea, setPasteArea] = React.useState("");
 
   React.useEffect(() => {
     const authCode = params.get("code") || false;
@@ -29,11 +30,11 @@ function AuthFeedPlugin() {
     const response = await fetch(`http://localhost:${port}/auth?code=${code}`);
     const json = await response.json();
     console.log(json);
-    setCopyArea("");
+    setPasteArea("");
   }
 
   function handleChange({ target }) {
-    setCopyArea(target.value);
+    setPasteArea(target.value);
   }
   function handleChange2() {}
   return (
@@ -114,7 +115,7 @@ function AuthFeedPlugin() {
               whiteSpace: "wrap",
               resize: "none",
             }}
-            value={copyArea}
+            value={PasteArea}
             onChange={handleChange}
             width="400px"
           ></textarea>

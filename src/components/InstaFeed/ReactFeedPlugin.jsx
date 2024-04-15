@@ -8,20 +8,26 @@ const TOKEN = import.meta.env.VITE_TOKEN;
 function ReactFeedPlugin() {
   const [instagramData, setInstagramData] = React.useState([]);
   const mobileState = useMedia("(max-width: 40rem)");
-  const numberOfPhotos = mobileState ? 3 : 6;
+  const numberOfPhotos = mobileState ? 6 : 9;
 
   React.useEffect(() => {
     async function getInstaFeed() {
       try {
-        const { data } = await fetchGraphAPI(TOKEN).then((r) => r);
-        setInstagramData((i) => [i, ...data]);
+        const fetchResponse = await fetchGraphAPI(TOKEN)
+          .then((r) => r)
+          .catch((erro) => erro);
+
+        if (fetchResponse.data) {
+          setInstagramData((i) => [i, ...fetchResponse.data]);
+        } else {
+          console.log(fetchResponse);
+        }
       } catch (error) {
         console.log(error);
       }
     }
     getInstaFeed();
   }, []);
-
   async function fetchGraphAPI(access_token) {
     const token = access_token;
     const fields =
@@ -30,7 +36,7 @@ function ReactFeedPlugin() {
     const fetch_response = await fetch(url);
     const json = fetch_response.ok
       ? await fetch_response.json()
-      : fetch_response.statusText;
+      : JSON.parse(await fetch_response.text());
     return json;
   }
 

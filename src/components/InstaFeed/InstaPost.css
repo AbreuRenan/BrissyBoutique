@@ -33,7 +33,7 @@
         grid-Template-Columns: repeat(auto-fill, minmax(280px, 1fr));
         justify-items: center;
         align-items: center;
-        width: 100vw;
+        width: calc(100svw - 16px);
         gap: 2rem;
         padding: 8px;
     }
